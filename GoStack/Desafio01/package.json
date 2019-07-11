@@ -1,0 +1,26 @@
+{
+  "name": "RocketSeat GoStack: Desafio01",
+  "version": "1.0.0",
+  "description": "The first challenge from RocketSeat's GoStack learning experience.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "RockeSeat",
+    "Challenge",
+    "NodeJS",
+    "BackEnd",
+    "API",
+    "Rest",
+    "JSON"
+  ],
+  "author": "hygor",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
