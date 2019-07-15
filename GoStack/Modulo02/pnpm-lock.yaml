@@ -1,4 +1,5 @@
 dependencies:
+  bcryptjs: 2.4.3
   express: 4.17.1
   pg: 7.11.0_pg@7.11.0
   pg-hstore: 2.3.3
@@ -209,6 +210,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-5T6P4xPgpp0YDFvSWwEZ4NoE3aM4QBQXDzmVbraCkFj8zHM+mba8SyqB5DbZWyR7mYHo6Y7BdQo3MoA4m0TeQg==
+  /bcryptjs/2.4.3:
+    dev: false
+    resolution:
+      integrity: sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=
   /binary-extensions/1.13.1:
     dev: true
     engines:
@@ -3580,6 +3585,7 @@ packages:
     resolution:
       integrity: sha512-HG/DWAJa1PAnHT9JAhNa8AbAv3FPaiLzioSjCcmuXXhP8MlpHO5vwls4g4j6n30Z74GVQj8Xa62dWVx1QCGklg==
 specifiers:
+  bcryptjs: ^2.4.3
   eslint: ^5.16.0
   eslint-config-airbnb-base: ^13.2.0
   eslint-config-prettier: ^6.0.0
