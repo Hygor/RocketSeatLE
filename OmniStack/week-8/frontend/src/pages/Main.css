@@ -1,0 +1,64 @@
+.main-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 3em 0;
+  text-align: center;
+}
+
+.main-container ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2em;
+  margin-top: 2em;
+}
+
+.main-container ul li {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container ul li img {
+  max-width: 100%;
+  border-radius: .5em .5em 0 0;
+}
+
+.main-container ul li footer {
+  flex: 1;
+  background: #FFF;
+  padding: 1em 1.5em;
+  text-align: left;
+  border-radius: 0 0 .5em .5em;
+}
+
+.main-container ul li footer strong {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.main-container ul li footer p {
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #999;
+  margin-top: .5em; 
+}
+
+.main-container ul li .buttons {
+  margin-top: 0.5em;
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: .5em;
+}
+
+.main-container ul li .buttons button {
+   height: 4em;
+   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+   border: none;
+   border-radius: .5em;
+   cursor: pointer;
+}
+
+.main-container .empty {
+  font-size: 5em;
+  margin: 2em auto;
+}
