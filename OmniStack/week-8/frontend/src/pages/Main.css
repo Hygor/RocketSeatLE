@@ -62,3 +62,47 @@
   font-size: 5em;
   margin: 2em auto;
 }
+
+.match-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.8);
+}
+
+.match-container .avatar {
+  width: 12em;
+  height: 12em;
+  border-radius: 6em;
+  border: .2em solid #FFF;
+  margin: 2em;
+}
+
+.match-container strong {
+  font-size: 2em;
+  color: #FFF;
+}
+
+.match-container p {
+  margin-top: 1em;
+  font-size: 1.2em;
+  line-height: 2em;
+  max-width: 24em;
+  color: rgba(255,255,255,.8);
+}
+
+.match-container button {
+  border: 0;
+  background: none;
+  font-weight: bold;
+  color: rgba(255,255,255,.8);
+  font-size: 1.4em;
+  margin-top: 2em;
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
 import { View, Image, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 
 import api from '../services/api';
@@ -6,11 +7,13 @@ import api from '../services/api';
 import logo from '../assets/logo.png';
 import iconDislike from '../assets/dislike.png';
 import iconLike from '../assets/like.png';
+import itsmatch from '../assets/itsamatch.png';
 import AsyncStorage from '@react-native-community/async-storage';
 
 function Main({ navigation }) {
   const id = navigation.getParam('user');
   const [users, setUsers] = useState([]); 
+  const [matchDev, setMatchDev] = useState(null);
 
   useEffect( () => {
     async function loadUsers() {
@@ -21,6 +24,18 @@ function Main({ navigation }) {
     }
     loadUsers()
   }, [id] )
+
+  useEffect( () => {
+    const socket = io('http://localhost:3333/', {
+      query: {
+        user: id
+      }
+    }); 
+
+    socket.on('match', dev => {
+      setMatchDev(dev)
+    });
+  }, [id]);
 
   async function handleLike() {
     const [user, ...rest] = users;
@@ -66,17 +81,33 @@ function Main({ navigation }) {
       </View>
       
       <View style={css.buttonsContainer}>
-        { users.length > 0 &&   
-        <TouchableOpacity onPress={handleDislike} style={css.button}>
-          <Image style={css.icon} source={iconDislike} />
-        </TouchableOpacity>
+        { users.length > 0 && (
+          <TouchableOpacity onPress={handleDislike} style={css.button}>
+            <Image style={css.icon} source={iconDislike} />
+          </TouchableOpacity>
+        )
         }   
-        { users.length > 0 &&   
-        <TouchableOpacity onPress={handleLike} style={css.button}>
-          <Image style={css.icon} source={iconLike} />
-        </TouchableOpacity>
+        { users.length > 0 && (
+          <TouchableOpacity onPress={handleLike} style={css.button}>
+            <Image style={css.icon} source={iconLike} />
+          </TouchableOpacity>
+        )
         }   
+        
       </View>
+
+      { matchDev && (
+        <View style={css.matchContainer}>
+          <Image style={css.matchImage} source={itsmatch} alt="It's a match" />
+          <Image source={{ uri: matchDev.avatar }} style={css.matchAvatar} alt={matchDev.name} />
+          <Text style={css.matchName}>{matchDev.name}</Text>
+          <Text style={css.matchBio}>{matchDev.bio}</Text>
+          <TouchableOpacity style={css.matchButton} onPress={() => setMatchDev(null)}>
+            <Text style={css.matchButtonText}>FECHAR</Text>
+          </TouchableOpacity>
+        </View>
+      )
+      }
 
     </SafeAreaView>
   )
@@ -170,7 +201,59 @@ const css = StyleSheet.create({
   empty: {
     textAlign: 'center',
     fontSize: 72,
+  },
+
+  matchContainer: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,.8)',
+  },
+
+  matchImage: {
+    height: 60,
+    resizeMode: 'contain'
+  },
+
+  matchAvatar: {
+    width: 180,
+    height: 180,
+    borderRadius: 90,
+    borderWidth: 5,
+    borderColor: '#FFF',
+    marginVertical: 30
+  },
+
+  matchName: {
+    fontSize: 24,
+    color: '#fff'
+  },
+
+  matchBio: {
+    fontSize: 16,
+    color: 'rgba(255,255,255,0.8)',
+    lineHeight: 24,
+    marginTop: 10,
+    textAlign: 'center',
+    paddingHorizontal: 30
+  },
+
+  matchButton: {
+    borderWidth: 0,
+    backgroundColor: 'transparent',
+  },
+
+  matchButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'rgba(255,255,255,.8)',
+    height: 24,
+    paddingHorizontal: 24,
+    paddingVertical: 24,
+    marginVertical: 24
   }
+
 });
 
 export default Main;
