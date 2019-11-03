@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+function experiencia(anos) {
+  let level;
+  if ( anos <= 1 ) level = 'iniciante';
+  else if ( anos <= 3 ) level = 'intermerdiario';
+  else if ( anos <= 7 ) level = 'avancado';
+  else level = 'jedi master';
+  return level;
+}
+var anosEstudo = 7;
+console.log('Seu nível é: ', experiencia(anosEstudo) );
+</script>
+  
+</body>
+</html>
