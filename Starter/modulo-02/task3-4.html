@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  const nomes = ["Diego", "Gabriel", "Lucas"];
+
+  function createList(nomes) {
+    const ul = document.createElement('ul');
+    document.body.prepend(ul);
+    nomes.forEach(element => {
+      let itemElement = document.createElement('li');
+          itemElement.innerText = element;
+        ul.appendChild(itemElement);
+    });
+  }
+  
+  createList(nomes);
+</script>
+</body>
+</html>
